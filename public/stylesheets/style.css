@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+@import url("vars.css");
+@import url("cta.css");
+@import url("offcanvas.css");
+@import url("header.css");
+@import url("footer.css");
+@import url("components.css");
+@import url("login.css");
+@import url("gallery.css");
+@import url("contacto.css");
+@import url("celebraciones.css");
+@import url("slider.css");
+
+
+html,body {
+  margin:0;
+  padding:0;
+
+}
+
+section.cols{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  div.inner{
+    display:flex;
+    gap:2rem;
+
+    *{
+      flex:1;
+    }
+  }
+
+}
+
+.boxed{
+  gap:1rem;
+  *{
+    max-width: var(--site-width);
+    margin:0 auto;
+  }
+}
+
+footer.boxed{
+  *{
+    max-width: calc( var(--site-width) + 10rem );
+  }
+}
+
+section h2{
+  text-align: center;
+  font-family: var(--font-family-header);
+  font-size:3rem;
+}
+
+section#presentacion{
+  min-height: 100vh;
+}
+
+section#banner{
+  background-color: black;
+  background-image: url( ../images/fondo-cta.jpg );
+  transform: skewY(2deg);
+  transition:0s;
+  padding:2rem 0;
+  margin:2rem 0;
+
+  *{
+    font-size:2rem;
+    color:white;
+    transform:skewY(-2deg);
+
+  }
+
+  &:hover{
+  }
+}
+
+section#video{
+  min-height: 50rem;
+  position:relative;
+  overflow: hidden;
+
+  .background{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    height:100%;
+    width:100%;
+    object-fit: cover;
+  }
+
+  .foreground{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.541);
+  }
+}

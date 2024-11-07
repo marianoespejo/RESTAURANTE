@@ -1,0 +1,35 @@
+main#login{
+    min-height: 80vh;
+  
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  
+  
+    form{
+      color: var(--primary-color);
+      
+      display:flex;
+      justify-content: center;
+      flex-direction: column;
+      padding:2rem;
+      gap:1rem;
+      box-shadow:0 0 5px 1px var(--primary-color);
+      border-radius: 1rem;
+  
+      input{
+        padding: 0.75rem;
+      }
+
+      label, input{
+        font-size:1.25rem;
+      }
+
+      button{
+        margin-top:2rem;
+      }
+
+    }
+  
+  }
