@@ -24,84 +24,19 @@ router.post('/contacta-con-nosotros', function(req, res, next) {
   res.redirect('/contacta-con-nosotros');
 });
 
-router.get('/contactos', function(req, res, next) {
-  res.send( datos.getAllContactos() );
-});
 
-router.get('/galeria', function(req, res, next) {
-  const imagenes = datos.getGalleryData()
+
+router.get('/home', function(req, res, next) {
+  const imagenes = datos.getAllPosts();
   res.render("galeria",{head_title:"Galerias de imágenes", imagenes:imagenes});
 });
 
-router.get('/carta', function(req,res){
-  const carta = datos.getAllCarta();
-  res.render("carta",{carta:carta});
-});
 
-router.get('/carta/:id',function(req,res){
-  const plato = datos.getItemCarta(req.params.id);
-  res.send(plato);
+router.get('/galeria', function(req, res, next) {
+  const imagenes = datos.getAllPosts();
+  res.render("galeria",{head_title:"Galerias de imágenes", imagenes:imagenes});
 });
 
 
 
-/* Rutas del login */
 
-
-router.get('/login',function(req,res){
-  res.render("login",{head_title:"Login"})
-});
-
-
-router.post('/login',function(req,res){
-  const email = req.body.email;
-  const pass = req.body.password;
-  
-  let user = datos.validateUser(email,pass);
-  
-  console.log(user);
-
-  if(user){
-    req.session.login = true;
-    req.session.user = user;
-    res.redirect("/admin");
-  }
-  else res.redirect("/login");
-});
-
-router.get('/logout',function(req,res){
-  req.session.login = false;
-  req.session.user = null;
-  res.redirect("/");
-});
-
-/* Rutas de administración */
-
-router.get('/admin',function(req,res){
-    if(req.session.login)  res.render("admin/admin", { user:req.session.user });
-  else res.redirect("/login");
-});
-
-
-router.get('/admin/mensajes',function(req,res){
-  console.log( datos.getAllContactos() );
-  if(req.session.login)  res.render("admin/mensajes", { user:req.session.user, mensajes:datos.getAllContactos() });
-  else res.redirect("/login");
-});
-
-/* Otras rutas */
-
-router.get('/debug/:category/:id', function(req, res, next) {
-  console.log(req.body);
-  console.log(req.hostname);
-  console.log(req.params);
-  console.log(req.query);
-  res.send("ok");
-});
-
-router.get('/index',function(req,res){
-  res.render("index",{title:"Bootstrap"});
-});
-
-
-module.exports = router;
